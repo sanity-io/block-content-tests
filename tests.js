@@ -1,4 +1,8 @@
-module.exports = function runTests(options) {
+const identity = inp => inp
+const defaults = {normalize: identity}
+
+module.exports = function runTests(opts = {}) {
+  const options = Object.assign({}, defaults, opts)
   const {render, h, normalize, getImageUrl} = options
 
   test('builds empty tree on empty block', () => {
