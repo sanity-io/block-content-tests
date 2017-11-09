@@ -1,9 +1,26 @@
 const identity = inp => inp
 const defaults = {normalize: identity}
+const requireAll = require('require-all')
+const fixtures = requireAll(`${__dirname  }/fixtures`)
 
 module.exports = function runTests(opts = {}) {
   const options = Object.assign({}, defaults, opts)
   const {render, h, normalize, getImageUrl} = options
+
+  test('never mutates input', () => {
+    Object.keys(fixtures)
+      .map(name => fixtures[name])
+      .forEach(fixture => {
+        const originalInput = JSON.parse(JSON.stringify(fixture.input))
+        const passedInput = fixture.input
+        try {
+          render({blocks: passedInput})
+        } catch (error) {
+          // ignore
+        }
+        expect(originalInput).toEqual(passedInput)
+      })
+  })
 
   test('builds empty tree on empty block', () => {
     const {input, output} = require('./fixtures/001-empty-block')
