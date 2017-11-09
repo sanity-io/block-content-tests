@@ -13,7 +13,11 @@ module.exports = function runTests(opts = {}) {
       .forEach(fixture => {
         const originalInput = JSON.parse(JSON.stringify(fixture.input))
         const passedInput = fixture.input
-        render({blocks: passedInput})
+        try {
+          render({blocks: passedInput})
+        } catch (error) {
+          // ignore
+        }
         expect(originalInput).toEqual(passedInput)
       })
   })
