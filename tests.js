@@ -1,7 +1,7 @@
 const identity = inp => inp
 const defaults = {normalize: identity}
 const requireAll = require('require-all')
-const fixtures = requireAll(`${__dirname  }/fixtures`)
+const fixtures = requireAll(`${__dirname}/fixtures`)
 
 module.exports = function runTests(opts = {}) {
   const options = Object.assign({}, defaults, opts)
@@ -11,10 +11,12 @@ module.exports = function runTests(opts = {}) {
     Object.keys(fixtures)
       .map(name => fixtures[name])
       .forEach(fixture => {
+        const highlight = () => h('mark')
+        const serializers = {marks: {highlight}}
         const originalInput = JSON.parse(JSON.stringify(fixture.input))
         const passedInput = fixture.input
         try {
-          render({blocks: passedInput})
+          render({blocks: passedInput, serializers})
         } catch (error) {
           // ignore
         }
@@ -213,6 +215,12 @@ module.exports = function runTests(opts = {}) {
     const link = ({mark, children}) => h('a', {className: 'mahlink', href: mark.href}, children)
 
     const result = render({blocks: input, serializers: {marks: {link}}})
+    expect(result).toEqual(normalize(output))
+  })
+
+  test('can specify custom serializers for defaults marks', () => {
+    const {input, output} = require('./fixtures/061-missing-mark-serializer')
+    const result = render({blocks: input})
     expect(result).toEqual(normalize(output))
   })
 
