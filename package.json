@@ -1,6 +1,6 @@
 {
   "name": "@sanity/block-content-tests",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Tests for shared block content rendering logic",
   "main": "tests.js",
   "scripts": {
