@@ -173,6 +173,16 @@ module.exports = function runTests(opts = {}) {
     expect(result).toEqual(normalize(output.replace(/<br\/>/g, '<br class="dat-newline"/>')))
   })
 
+  test('can nest marks correctly in block/marks context', () => {
+    const {input, output} = require('./fixtures/024-inline-images')
+    const result = render({
+      blocks: input,
+      projectId: '3do82whm',
+      dataset: 'production'
+    })
+    expect(result).toEqual(normalize(output))
+  })
+
   test('can specify custom serializer for custom block types', () => {
     const {input, output} = require('./fixtures/050-custom-block-type')
     const CodeRenderer = props => {
