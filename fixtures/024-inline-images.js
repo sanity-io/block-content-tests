@@ -73,5 +73,5 @@ module.exports = {
     }
   ],
   output:
-    '<div><p><code>Foo! Bar!</code><img src="https://cdn.sanity.io/images/3do82whm/production/magnificent_beastZ8Z5qZHHxgrTJf6Hhz-162x120.png">Neat</p><p><code>Foo! Bar! </code><img src="https://cdn.sanity.io/images/3do82whm/production/magnificent_beastZ8Z5qZHHxgrTJf6Hhz-162x120.png"><code> Baz!</code></p><p>Foo! Bar! <img src="https://cdn.sanity.io/images/3do82whm/production/magnificent_beastZ8Z5qZHHxgrTJf6Hhz-162x120.png"><code> Baz!</code></p></div>'
+    '<div><p><code>Foo! Bar!</code><img src="https://cdn.sanity.io/images/3do82whm/production/magnificent_beastZ8Z5qZHHxgrTJf6Hhz-162x120.png"/>Neat</p><p><code>Foo! Bar! </code><img src="https://cdn.sanity.io/images/3do82whm/production/magnificent_beastZ8Z5qZHHxgrTJf6Hhz-162x120.png"/><code> Baz!</code></p><p>Foo! Bar! <img src="https://cdn.sanity.io/images/3do82whm/production/magnificent_beastZ8Z5qZHHxgrTJf6Hhz-162x120.png"/><code> Baz!</code></p></div>'
 }
