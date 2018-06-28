@@ -183,6 +183,17 @@ module.exports = function runTests(opts = {}) {
     expect(result).toEqual(normalize(output))
   })
 
+  test('can render images with correct hotspot/crop', () => {
+    const {input, output} = require('./fixtures/025-image-with-hotspot')
+    const result = render({
+      blocks: input,
+      projectId: '3do82whm',
+      dataset: 'production',
+      imageOptions: {w: 320, h: 240}
+    })
+    expect(result).toEqual(normalize(output))
+  })
+
   test('can specify custom serializer for custom block types', () => {
     const {input, output} = require('./fixtures/050-custom-block-type')
     const CodeRenderer = props => {
