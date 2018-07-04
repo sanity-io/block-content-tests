@@ -16,7 +16,12 @@ module.exports = function runTests(opts = {}) {
         const originalInput = JSON.parse(JSON.stringify(fixture.input))
         const passedInput = fixture.input
         try {
-          render({blocks: passedInput, serializers})
+          render({
+            blocks: passedInput,
+            serializers,
+            projectId: '3do82whm',
+            dataset: 'production'
+          })
         } catch (error) {
           // ignore
         }
