@@ -199,6 +199,12 @@ module.exports = function runTests(opts = {}) {
     expect(result).toEqual(normalize(output))
   })
 
+  test('can render styled list items', () => {
+    const {input, output} = require('./fixtures/027-styled-list-items')
+    const result = render({blocks: input})
+    expect(result).toEqual(normalize(output))
+  })
+
   test('can specify custom serializer for custom block types', () => {
     const {input, output} = require('./fixtures/050-custom-block-type')
     const CodeRenderer = props => {
