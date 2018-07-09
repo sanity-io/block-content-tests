@@ -41,6 +41,16 @@ module.exports = function runTests(opts = {}) {
     expect(result).toEqual(normalize(output))
   })
 
+  test('can force rendering of container on single child', () => {
+    const {input, output} = require('./fixtures/002-single-span')
+    const result = render({
+      blocks: input,
+      renderContainerOnSingleChild: true,
+      className: 'container'
+    })
+    expect(result).toEqual(normalize(`<div class="container">${output}</div>`))
+  })
+
   test('builds simple multi-node tree on markless spans', () => {
     const {input, output} = require('./fixtures/003-multiple-spans')
     const result = render({blocks: input})
