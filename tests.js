@@ -209,6 +209,17 @@ module.exports = function runTests(opts = {}) {
     expect(result).toEqual(normalize(output))
   })
 
+  test('can render inline block with text property', () => {
+    const {input, output} = require('./fixtures/026-inline-block-with-text')
+    const result = render({
+      blocks: input,
+      projectId: '3do82whm',
+      dataset: 'production',
+      serializers: {types: {button: props => h('button', null, props.node.text)}}
+    })
+    expect(result).toEqual(normalize(output))
+  })
+
   test('can render styled list items', () => {
     const {input, output} = require('./fixtures/027-styled-list-items')
     const result = render({blocks: input})
